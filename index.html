@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Type-writer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 1100px;
+        margin: auto;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container video {
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      button {
+        width: 270px;
+        height: 50px;
+        background-color: white;
+        color: black;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .typeLine {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        top: 250px;
+        /* padding: 20px;  */
+      }
+      .container span {
+        margin: 10px;
+        font-size: larger;
+      }
+      .container input {
+        height: 40px;
+        padding-left: 10px;
+      }
+      #mydiv {
+        width: 100%;
+        height: 40px;
+        border: 1px solid black;
+        margin: 30px 0px 30px;
+        color: black;
+        background-color: white;
+      }
+      #mybutton {
+        box-shadow: 0 0 5px white, 0 0 25px white;
+      }
+
+      #mybutton:hover {
+        box-shadow: 0 0 5px white, 0 0 25px white, 0 0 50px white,
+          0 0 100px white, 0 0 200px white;
+      }
+      .box {
+        color: black;
+        font-size: larger;
+        padding: 10px;
+        width: 0 30px;
+      }
+      #word {
+        font-size: 20px;
+        font-weight: bolder;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="typeLine">
+      <span id="word">Type-Something..!!</span>
+      <br />
+      <input class="box" type="text" id="inputText" />
+    </div>
+    <div class="container">
+      <video
+        class="video"
+        src="./pexels-soumya-11041434-1920x1080-30fps.mp4"
+        autoplay
+        muted
+        loop
+      ></video>
+      <div id="mydiv"></div>
+      <button id="mybutton" onclick="typewrite()">Type Writer Effect</button>
+    </div>
+    <script>
+      let mydiv = document.getElementById("mydiv");
+      let mybutton = document.getElementById("mybutton");
+
+      const typewrite = () => {
+        let text = document.getElementById("inputText").value;
+        mydiv.textContent = "";
+        for (let i = 0; i < text.length; i++) {
+          const j = i;
+          setTimeout(() => {
+            mydiv.textContent += text[j];
+          }, 5000);
+        }
+      };
+    </script>
+  </body>
+</html>
